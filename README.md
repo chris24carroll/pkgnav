@@ -45,15 +45,15 @@ example
 
 This is what it looks like if you navigate to a file starting at the package level:
 
-![Navigating from all packages](images/navigate_from_packages.gif)
+![Navigating from all packages](https://raw.githubusercontent.com/chris24carroll/pkgnav/main/images/navigate_from_packages.gif)
 
 And this is what it looks like navigating to a file starting from the module level:
 
-![Navigating from modules](images/navigate_from_modules.gif)
+![Navigating from modules](https://raw.githubusercontent.com/chris24carroll/pkgnav/main/images/navigate_from_modules.gif)
 
 You can also navigate to a file starting at the "file" level:
 
-![Navigating from all names](images/navigate_from_names.gif)
+![Navigating from all names](https://raw.githubusercontent.com/chris24carroll/pkgnav/main/images/navigate_from_names.gif)
 
 ## Commands
 
