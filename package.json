@@ -1,0 +1,132 @@
+{
+	"name": "pkgnav",
+	"publisher": "pkgnav",
+	"repository": "file:///home/ccarroll/Development/pkgnav.git",
+	"displayName": "Package Navigator",
+	"description": "Open files by selecting from packages from the \\\"quick pick\\\" dialog.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.45.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:pkgnav.openFileByModules",
+		"onCommand:pkgnav.openFileByPackages",
+		"onCommand:pkgnav.openFileByNames",
+		"onCommand:pkgnav.openFileInCurrentPackage",
+		"onCommand:pkgnav.openBuildFile",
+		"onCommand:pkgnav.openResourceFile",
+		"onCommand:pkgnav.openOtherFile",
+		"onCommand:pkgnav.reload"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "pkgnav.openFileByModules",
+				"title": "Open file by modules"
+			},
+			{
+				"command": "pkgnav.openFileByPackages",
+				"title": "Open file by packages"
+			},
+			{
+				"command": "pkgnav.openFileByNames",
+				"title": "Open file by names"
+			},
+			{
+				"command": "pkgnav.openFileInCurrentPackage",
+				"title": "Open file in the current package"
+			},
+			{
+				"command": "pkgnav.openBuildFile",
+				"title": "Open build file"
+			},
+			{
+				"command": "pkgnav.openResourceFile",
+				"title": "Open resource file"
+			},
+			{
+				"command": "pkgnav.openOtherFile",
+				"title": "Open other file"
+			},
+			{
+				"command": "pkgnav.reload",
+				"title": "Reload source files"
+			}
+		],
+		"configuration": {
+			"title": "Package Navigator",
+			"properties": {
+				"pkgnav.sources": {
+					"type": "array",
+					"markdownDescription": "List of directory subpaths to check for source files. A path does **not** need to start at the root of the project. And it shold **not** contain any file globs. It should be the longest possible subpath that identifies source files that is not specific to an individual project. For example, a Java project might include `src/main/java`.",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"src"
+					]
+				},
+				"pkgnav.sourcesIgnore": {
+					"type": "string",
+					"markdownDescription": "Optional file glob pattern of files to ignore when looking for sources."
+				},
+				"pkgnav.moduleSearchDepth": {
+					"type": "integer",
+					"default": 2,
+					"markdownDescription": "How deep to descend into subdirectories when searching for a `#pkgnav.sources#` subpath."
+				},
+				"pkgnav.resourceFiles": {
+					"type": "array",
+					"markdownDescription": "File glob patterns to select resource files.",
+					"items": {
+						"type": "string"
+					}
+				},
+				"pkgnav.buildFiles": {
+					"type": "array",
+					"markdownDescription": "File glob patterns to select build files.",
+					"items": {
+						"type": "string"
+					}
+				},
+				"pkgnav.otherFiles": {
+					"type": "array",
+					"markdownDescription": "File glob patterns to select other files.",
+					"items": {
+						"type": "string"
+					}
+				},
+				"pkgnav.packageSeparator": {
+					"type": "string",
+					"markdownDescription": "String to use as a separtor when concatenating package names",
+					"default": "."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.45.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	}
+}
