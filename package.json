@@ -1,10 +1,10 @@
 {
 	"name": "pkgnav",
-	"publisher": "pkgnav",
-	"repository": "file:///home/ccarroll/Development/pkgnav.git",
+	"publisher": "chris24carroll",
+	"repository": "https://github.com/chris24carroll/pkgnav.git",
 	"displayName": "Package Navigator",
 	"description": "Open files by selecting from packages from the \\\"quick pick\\\" dialog.",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.45.0"
 	},

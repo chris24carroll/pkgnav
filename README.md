@@ -115,9 +115,11 @@ Package Navigator doesn't provide any keyboard shortcuts. But here is an example
 
 ## Building
 
-To manually build the Package Navigator extension, run
+To manually build the Package Navigator extension:
 
 ```
+git clone https://github.com/chris24carroll/pkgnav.git
+cd pkgnav
 npm install
 vsce package
 ```
