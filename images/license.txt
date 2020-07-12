@@ -1,0 +1,8 @@
+The image in the file logo.png is in the public domain, licensed under
+the Creative Commons Zero 1.0 Public Domain License
+(https://creativecommons.org/publicdomain/zero/1.0)
+
+The logo.png image was made from two public domain images from https://openclipart.org
+
+  - https://openclipart.org/detail/26101/cardboard-box-package
+  - https://openclipart.org/detail/23410/compass

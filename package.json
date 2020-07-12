@@ -4,10 +4,11 @@
 	"repository": "https://github.com/chris24carroll/pkgnav.git",
 	"displayName": "Package Navigator",
 	"description": "Open files by selecting from packages from the \\\"quick pick\\\" dialog.",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
+        "icon": "images/logo.png",
 	"categories": [
 		"Other"
 	],
