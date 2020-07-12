@@ -76,6 +76,28 @@ You'll probably need to change the default settings for Package Navigator to be 
 
 You can view all the settings and their descriptions by opening up VS Code's settings and seaching for `pkgnav`.
 
+Here is a sample configuration of Package Navigator (from settings.json) that is centered around Scala development:
+
+```json
+{
+    "pkgnav.sources": [
+        "src/main/scala",
+        "src/test/scala"
+    ],
+    "pkgnav.resourceFiles": [
+        "**/src/main/resources/**",
+        "**/src/test/resources/**"
+    ],
+    "pkgnav.buildFiles": [
+        "build.sbt",
+        "project/*.*",
+        ".scalafmt.conf"
+    ]
+}
+```
+
+As mentioned in the settings documentation the `pkgnav.sources` setting, unlike some of the other settings, should not be a list of file glob patterns. Package Navigator will look for matching sub-directories a configurable number of levels down from project root (`pkgnav.moduleSearchDepth`). This is so that Package Navigator can consider directory paths between the project root and the source path a _module_ and group packages accordingly.
+
 ## Keyboard shortcuts
 
 Package Navigator doesn't provide any keyboard shortcuts. But here is an example of a set of keybindings for Package Navigator commands:
