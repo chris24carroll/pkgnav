@@ -2,7 +2,7 @@
 
 Package Navigator is a VS Code extension that allows for opening project files
 by viewing and selecting flattened package names in VS Code's "quick pick" 
-dialog.
+popup dialog.
 
 To use Package Navigator, you describe source locations by defining directory sub-paths, like `src`, `src/tests`, or `src/main/java`.
 
@@ -68,7 +68,9 @@ Package Navigator provides the following commands:
 | Open build file | pkgnav.openBuildFile | Open a file that matches one of the file glob patterns from the `pkgnav.buildFiles` configuration property |
 | Open resource file | pkgnav.openResourceFile | Open a file that matches one of the file glob patterns from the `pkgnav.resourceFiles` configuration property |
 | Open other file | pkgnav.openOtherFile | Open a file that matches one of the file glob patterns from the `pkgnav.otherFiles` configuration property |
+| Open file from cursor | pkgnav.openFileByCurrentWord | Open a file if the cursor is currently on a word that is a file name |
 | Reload source files | pkgnav.reload | Ususally Package Navigator automatically detects when the file system or a configuration property is changed. But this command can force a reload of its internal state if necessary |
+| Diplsay Package Navigator Commands | pkgnav.showMenu | Display and choose from a list of all available Package Navigator commands |
 
 ## Configuration
 
@@ -103,7 +105,7 @@ As mentioned in the settings documentation the `pkgnav.sources` setting, unlike 
 Package Navigator doesn't provide any keyboard shortcuts. But here is an example of a set of keybindings for Package Navigator commands:
 
 ```json
-{ ...
+{
     {
         "key": "ctrl+o m",
         "command": "pkgnav.openFileByModules"

@@ -24,7 +24,7 @@ export function selectItem(items: Array<string>): Thenable<string> {
   });
 }
 
-function selectThing<A>(things: Array<A>, label: (thing: A) => string): Thenable<A> {
+export function selectThing<A>(things: Array<A>, label: (thing: A) => string): Thenable<A> {
   return new Promise((resolve, reject) => {
     selectItem(things.map(label)).then(selected => {
       const thing = things.find(thing => label(thing) === selected);

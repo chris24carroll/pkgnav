@@ -3,12 +3,12 @@
 	"publisher": "chris24carroll",
 	"repository": "https://github.com/chris24carroll/pkgnav.git",
 	"displayName": "Package Navigator",
-	"description": "Open files by selecting from packages from the \\\"quick pick\\\" dialog.",
-	"version": "1.0.2",
+	"description": "Open files by selecting from package names in a popup dialog box.",
+	"version": "1.1.0",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
-        "icon": "images/logo.png",
+	"icon": "images/logo.png",
 	"categories": [
 		"Other"
 	],
@@ -20,7 +20,9 @@
 		"onCommand:pkgnav.openBuildFile",
 		"onCommand:pkgnav.openResourceFile",
 		"onCommand:pkgnav.openOtherFile",
-		"onCommand:pkgnav.reload"
+		"onCommand:pkgnav.openFileByCurrentWord",
+		"onCommand:pkgnav.reload",
+		"onCommand:pkgnav.showMenu"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -54,8 +56,16 @@
 				"title": "Open other file"
 			},
 			{
+				"command": "pkgnav.openFileByCurrentWord",
+				"title": "Open file from cursor"
+			},
+			{
 				"command": "pkgnav.reload",
 				"title": "Reload source files"
+			},
+			{
+				"command": "pkgnav.showMenu",
+				"title": "Display Package Navigator Commands"
 			}
 		],
 		"configuration": {

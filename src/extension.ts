@@ -18,14 +18,9 @@ function registerCommand(ctx: vscode.ExtensionContext, id: string, cmd: () => vo
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	registerCommand(context, 'pkgnav.openFileByModules', commands.openFileByModules);
-	registerCommand(context, 'pkgnav.openFileByPackages', commands.openFileByPackages);
-	registerCommand(context, 'pkgnav.openFileByNames', commands.openFileByNames);
-	registerCommand(context, 'pkgnav.openFileInCurrentPackage', commands.openFileInCurrentPackage);
-	registerCommand(context, 'pkgnav.openResourceFile', commands.openResourceFile);
-	registerCommand(context, 'pkgnav.openBuildFile', commands.openBuildFile);
-	registerCommand(context, 'pkgnav.openOtherFile', commands.openOtherFile);
-	registerCommand(context, 'pkgnav.reload', commands.reload);
+	commands.allCommands.forEach(cmd => {
+		registerCommand(context, cmd.command, cmd.function);
+	});
 }
 
 // this method is called when your extension is deactivated
