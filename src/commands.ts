@@ -121,7 +121,10 @@ export function openFileInCurrentPackage() {
 export function openFileByCurrentWord() {
   const word = vsutils.currentWord();
   if (word) {
-    selectAndOpenFile(pkgnav.filesForName(word));
+    const files = pkgnav.filesForName(word);
+    if (files.length) {
+      selectAndOpenFile(pkgnav.filesForName(word));
+    }
   }
 }
 
