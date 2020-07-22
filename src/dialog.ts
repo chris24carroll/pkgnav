@@ -8,19 +8,24 @@ export function message(msg: string) {
 export function selectItem(items: Array<string>): Thenable<string> {
   return new Promise((resolve, reject) => {
 
-    const quickPick = window.createQuickPick();
-    quickPick.items = items.map(i => ({ label: i }));
-    quickPick.onDidChangeSelection(selection => {
-      quickPick.hide();
+    if (items.length) {
+      const quickPick = window.createQuickPick();
+      quickPick.items = items.map(i => ({ label: i }));
+      quickPick.onDidChangeSelection(selection => {
+        quickPick.hide();
 
-      if (selection[0]) {
-        resolve(selection[0].label);
-      } else {
-        reject();
-      }
-    });
-    quickPick.onDidHide(() => quickPick.dispose());
-    quickPick.show();
+        if (selection[0]) {
+          resolve(selection[0].label);
+        } else {
+          reject();
+        }
+      });
+      quickPick.onDidHide(() => quickPick.dispose());
+      quickPick.show();
+    } else {
+      message("Package Navigator: Nothing found");
+      reject();
+    }
   });
 }
 
