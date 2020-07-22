@@ -2,6 +2,10 @@
 
 All notable changes to the "pkgnav" extension will be documented in this file.
 
+## [1.1.1]
+- Prefix all command titles with "Package Navigator:" to make them more identifiable.
+- When a command results in an empty selection, don't display the selection dialog. Show an informational message instead.
+
 ## [1.1.0]
 
 - Add a command to open a file based on the current word under the cursor.
