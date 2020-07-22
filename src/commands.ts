@@ -7,53 +7,53 @@ import * as vsutils from './vsutils';
 export const allCommands = [
   {
     command: "pkgnav.openFileByModules",
-    title: "Open file by modules",
+    title: "Package Navigator: Open file by modules",
     function: openFileByModules
   },
   {
     command: "pkgnav.openFileByPackages",
-    title: "Open file by packages",
+    title: "Package Navigator: Open file by packages",
     function: openFileByPackages
   },
   {
     command: "pkgnav.openFileByNames",
-    title: "Open file by names",
+    title: "Package Navigator: Open file by names",
     function: openFileByNames
   },
   {
     command: "pkgnav.openFileInCurrentPackage",
-    title: "Open file in the current package",
+    title: "Package Navigator: Open file in the current package",
     function: openFileInCurrentPackage
 
   },
   {
     command: "pkgnav.openBuildFile",
-    title: "Open build file",
+    title: "Package Navigator: Open build file",
     function: openBuildFile
   },
   {
     command: "pkgnav.openResourceFile",
-    title: "Open resource file",
+    title: "Package Navigator: Open resource file",
     function: openResourceFile
   },
   {
     command: "pkgnav.openOtherFile",
-    title: "Open other file",
+    title: "Package Navigator: Open other file",
     function: openOtherFile
   },
   {
     command: "pkgnav.openFileByCurrentWord",
-    title: "Open file from cursor",
+    title: "Package Navigator: Open file from cursor",
     function: openFileByCurrentWord
   },
   {
     command: "pkgnav.reload",
-    title: "Reload source files",
+    title: "Package Navigator: Reload source files",
     function: reload
   },
   {
     command: "pkgnav.showMenu",
-    title: "Display Package Navigator Commands",
+    title: "Package Navigator: Show Commands",
     function: showMenu
   }
 ];
