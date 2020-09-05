@@ -59,15 +59,15 @@ export const allCommands = [
 ];
 
 export function openFileByNames() {
-  dialog.selectItem(pkgnav.allNames()).then(name => {
+  selectName(pkgnav.allNames()).then(name => {
     selectAndOpenFile(pkgnav.filesForName(name));
   });
 }
 
 export function openFileByModules() {
-  dialog.selectItem(pkgnav.allModules()).then(mdl => {
-    dialog.selectItem(pkgnav.packagesForModule(mdl)).then(pkg => {
-      dialog.selectItem(pkgnav.namesForPackage(pkg)).then(name => {
+  selectModule(pkgnav.allModules()).then(mdl => {
+    selectPackage(pkgnav.packagesForModule(mdl)).then(pkg => {
+      selectName(pkgnav.namesForPackage(pkg)).then(name => {
         selectAndOpenFile(pkgnav.filesForModuleAndPackageAndName(mdl, pkg, name));
       });
     });
@@ -75,19 +75,34 @@ export function openFileByModules() {
 }
 
 export function openFileByPackages() {
-  dialog.selectItem(pkgnav.allPackages()).then(pkg => {
-    dialog.selectItem(pkgnav.fileNamesForPackage(pkg)).then(name => {
+  selectPackage(pkgnav.allPackages()).then(pkg => {
+    selectName(pkgnav.namesForPackage(pkg)).then(name => {
       selectAndOpenFile(pkgnav.filesForPackageAndName(pkg, name));
     });
   });
 }
 
+function selectPackage(pkgs: Array<string>): Thenable<string> {
+  return dialog.selectThing(pkgs, pkg => ("$(package)  " + pkg));
+}
+
+function selectModule(modules: Array<string>): Thenable<string> {
+  return dialog.selectThing(modules, module => ("$(file-submodule)  " + module));
+}
+
+function selectName(names: Array<string>): Thenable<string> {
+  return dialog.selectThing(names, name => ("$(symbol-class)  " + name));
+}
+
+function selectFile(files: Array<string>): Thenable<string> {
+  return dialog.selectThing(files, file => ("$(file)  " + file));
+}
 
 function selectAndOpenFile(files: Array<string>) {
   if (files.length === 1) {
     fileutils.openFile(files[0]);
   } else {
-    dialog.selectFile(files).then(file => {
+    selectFile(files).then(file => {
       fileutils.openFile(file);
     });
   }
@@ -111,7 +126,7 @@ export function openFileInCurrentPackage() {
     const pkg = pkgnav.packageForFile(activeFile);
     if (pkg) {
       const names = pkgnav.namesForPackage(pkg);
-      dialog.selectItem(names).then(name => {
+      selectName(names).then(name => {
         selectAndOpenFile(pkgnav.filesForPackageAndName(pkg, name));
       });
     }

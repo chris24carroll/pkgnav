@@ -167,17 +167,6 @@ export function allPackages(): Array<string> {
   return Array.from(pkgs).sort(compare);
 }
 
-export function fileNamesForPackage(pkg: string): Array<string> {
-  const names = new Set<string>();
-  Object.values(getSources()).forEach(fi => {
-    if (fi.package === pkg) {
-      names.add(fi.name);
-    }
-  });
-
-  return Array.from(names).sort(compare);
-}
-
 export function filesForPackageAndName(pkg: string, name: string): Array<string> {
 
   const files = new Set<string>();
