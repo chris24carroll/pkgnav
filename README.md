@@ -8,7 +8,7 @@ To use Package Navigator, you describe source locations by defining directory su
 
 Directory paths that are found above those paths are considered **modules**, and directory paths that are found below those paths are considered **packages**.
 
-For example, given the following project structure:
+For example, if `src` is a configured source directory, given the following project structure:
 
 ```
 example
