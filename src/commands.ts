@@ -95,7 +95,22 @@ function selectName(names: Array<string>): Thenable<string> {
 }
 
 function selectFile(files: Array<string>): Thenable<string> {
-  return dialog.selectThing(files, file => ("$(file)  " + file));
+  const root = vsutils.workspaceFolder().map(f => f.path).getOrElse("");
+
+  return dialog.selectThing(files, file => {
+    var displayPath;
+    if (file.startsWith(root.toString())) {
+      displayPath = file.substring(root.length);
+      if (displayPath.startsWith("/") || displayPath.startsWith("\\")) {
+        displayPath = displayPath.substring(1);
+      }
+    } else {
+      displayPath = file;
+    }
+
+
+    return "$(file)  " + displayPath;
+  });
 }
 
 function selectAndOpenFile(files: Array<string>) {
