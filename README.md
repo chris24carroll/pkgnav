@@ -70,7 +70,7 @@ Package Navigator provides the following commands:
 | Open other file | pkgnav.openOtherFile | Open a file that matches one of the file glob patterns from the `pkgnav.otherFiles` configuration property |
 | Open file from cursor | pkgnav.openFileByCurrentWord | Open a file if the cursor is currently on a word that is a file name |
 | Reload source files | pkgnav.reload | Ususally Package Navigator automatically detects when the file system or a configuration property is changed. But this command can force a reload of its internal state if necessary |
-| Diplsay Package Navigator Commands | pkgnav.showMenu | Display and choose from a list of all available Package Navigator commands |
+| Show Commands | pkgnav.showMenu | Display and choose from a list of all available Package Navigator commands |
 
 ## Configuration
 
@@ -98,7 +98,7 @@ Here is a sample configuration of Package Navigator (from settings.json) that is
 }
 ```
 
-As mentioned in the settings documentation the `pkgnav.sources` setting, unlike some of the other settings, should not be a list of file glob patterns. Package Navigator will look for matching sub-directories a configurable number of levels down from project root (`pkgnav.moduleSearchDepth`). This is so that Package Navigator can consider directory paths between the project root and the source path a _module_ and group packages accordingly.
+As mentioned in the settings documentation the `pkgnav.sources` setting, unlike some of the other settings, should not contain file glob patterns. Package Navigator will look for sub-directories matching the `pakgnav.sources` patterns a configurable number of levels down from project root (`pkgnav.moduleSearchDepth`). This is so that Package Navigator can consider directory paths between the project root and the source path a _module_ and group packages accordingly.
 
 ## Keyboard shortcuts
 
