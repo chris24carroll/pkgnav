@@ -2,6 +2,10 @@
 
 All notable changes to the "pkgnav" extension will be documented in this file.
 
+## [1.1.2]
+- Add icons to dialog selections.
+- When selection files, display file paths relative to the project root.
+
 ## [1.1.1]
 - Prefix all command titles with "Package Navigator:" to make them more identifiable.
 - When a command results in an empty selection, don't display the selection dialog. Show an informational message instead.
