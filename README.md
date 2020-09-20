@@ -137,6 +137,10 @@ Package Navigator doesn't provide any keyboard shortcuts. But here is an example
 }
 ```
 
+## Getting help
+
+If you'd like to ask questions or report an issue, [please do so](https://github.com/chris24carroll/pkgnav/issues).
+
 ## Building
 
 To manually build the Package Navigator extension:
