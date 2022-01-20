@@ -246,10 +246,10 @@ export function packagesForModule(m: String): Array<string> {
   return Array.from(pkgs).sort(compare);
 }
 
-export function namesForPackage(pkg: String): Array<string> {
+export function namesForPackage(pkg: String, module: String | undefined): Array<string> {
   const names = new Set<string>();
   Object.values(sources).forEach(fi => {
-    if (fi.package === pkg) {
+    if (fi.package === pkg && (module === undefined || module === fi.module)) {
       names.add(fi.name);
     }
   });

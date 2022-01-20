@@ -67,7 +67,7 @@ export function openFileByNames() {
 export function openFileByModules() {
   selectModule(pkgnav.allModules()).then(mdl => {
     selectPackage(pkgnav.packagesForModule(mdl)).then(pkg => {
-      selectName(pkgnav.namesForPackage(pkg)).then(name => {
+      selectName(pkgnav.namesForPackage(pkg, mdl)).then(name => {
         selectAndOpenFile(pkgnav.filesForModuleAndPackageAndName(mdl, pkg, name));
       });
     });
@@ -76,7 +76,7 @@ export function openFileByModules() {
 
 export function openFileByPackages() {
   selectPackage(pkgnav.allPackages()).then(pkg => {
-    selectName(pkgnav.namesForPackage(pkg)).then(name => {
+    selectName(pkgnav.namesForPackage(pkg, undefined)).then(name => {
       selectAndOpenFile(pkgnav.filesForPackageAndName(pkg, name));
     });
   });
@@ -140,7 +140,7 @@ export function openFileInCurrentPackage() {
   if (activeFile) {
     const pkg = pkgnav.packageForFile(activeFile);
     if (pkg) {
-      const names = pkgnav.namesForPackage(pkg);
+      const names = pkgnav.namesForPackage(pkg, undefined);
       selectName(names).then(name => {
         selectAndOpenFile(pkgnav.filesForPackageAndName(pkg, name));
       });
