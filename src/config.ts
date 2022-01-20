@@ -27,3 +27,42 @@ export function getOtherFilePatterns() {
 export function getPackageSeparator(): string {
   return workspace.getConfiguration("pkgnav")["packageSeparator"];
 }
+
+
+function getTemplateConfigString(index: number, key: string): string | undefined {
+  const value = workspace.getConfiguration(`pkgnav.template.${index}`)[key] as string | undefined;
+  if (value) {
+    if (value.trim().length) {
+      return value.trim();
+    }
+  }
+}
+
+interface TemplateConfig {
+  name: string;
+  text: string;
+}
+
+function getTemplateConfig(index: number): TemplateConfig | undefined {
+  const name = getTemplateConfigString(index, "name");
+  if (name) {
+    const text = getTemplateConfigString(index, "text");
+    if (text) {
+      return {
+        name,
+        text
+      };
+    }
+  }
+}
+
+export function getTemplates(): Array<TemplateConfig> {
+  const templates = [];
+  for (let i = 1; i <= 9; i++) {
+    const template = getTemplateConfig(i);
+    if (template) {
+      templates.push(template);
+    }
+  }
+  return templates;
+}

@@ -1,8 +1,9 @@
-import { workspace, Uri, CancellationTokenSource } from 'vscode';
+import { window, workspace, Uri, CancellationTokenSource, DebugConsoleMode } from 'vscode';
 import * as config from './config';
 import * as vsutils from './vsutils';
 import { fileInfo, FileInfo } from './fileutils';
 import { composeThenables, flatten } from './utils';
+import { selectThing } from './dialog';
 
 // make sure we only initialize once
 var initialized = false;
@@ -228,12 +229,15 @@ export function getOtherFiles(): Thenable<Array<string>> {
 }
 
 export function packageForFile(file: string) {
+  const entry = fileInfoForFile(file);
+  return entry?.package;
+}
+
+export function fileInfoForFile(file: string): FileInfo | undefined {
   const entry = Object.entries(sources).find(entry => {
     return entry[0] === file;
   });
-  if (entry) {
-    return entry[1].package;
-  }
+  return entry?.[1];
 }
 
 export function packagesForModule(m: String): Array<string> {
@@ -269,4 +273,36 @@ export function fileForInfo(info: FileInfo): string | undefined {
     }
   });
   return file;
+}
+
+export function insertTemplate(): Thenable<void> {
+  return selectThing(config.getTemplates(), template => template.name)
+    .then(template => {
+      const editor = window.activeTextEditor;
+      if (editor) {
+        const activeFile = editor.document.fileName;
+        const info = fileInfoForFile(activeFile);
+        const text = makeTemplateSubstitutions(template.text, info);
+        const pos = editor.selection.active;
+        editor.edit(editBuilder => {
+          editBuilder.insert(pos, text);
+        });
+      }
+    });
+}
+
+function makeTemplateSubstitutions(text: string, info: FileInfo | undefined): string {
+  let result = text;
+  result = makeTextSubstitution(result, "${name}", info?.name);
+  result = makeTextSubstitution(result, "${package}", info?.package);
+  result = makeTextSubstitution(result, "${module}", info?.module);
+  return result;
+}
+
+function makeTextSubstitution(text: string, key: string, value: string | undefined): string {
+  if (value) {
+    return text.replaceAll(key, value);
+  } else {
+    return text.replaceAll(key, "");
+  }
 }

@@ -55,6 +55,11 @@ export const allCommands = [
     command: "pkgnav.showMenu",
     title: "Package Navigator: Show Commands",
     function: showMenu
+  },
+  {
+    command: "pkgnav.insertTemplate",
+    title: "Package Navigator: Insert Template",
+    function: insertTemplate
   }
 ];
 
@@ -167,4 +172,8 @@ export function showMenu() {
   dialog.selectThing(commands, cmd => cmd.title).then(cmd => {
     cmd.function();
   });
+}
+
+export function insertTemplate() {
+  pkgnav.insertTemplate();
 }

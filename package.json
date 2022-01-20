@@ -22,7 +22,8 @@
 		"onCommand:pkgnav.openOtherFile",
 		"onCommand:pkgnav.openFileByCurrentWord",
 		"onCommand:pkgnav.reload",
-		"onCommand:pkgnav.showMenu"
+		"onCommand:pkgnav.showMenu",
+		"onCommand:pkgnav.insertTemplate"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -66,6 +67,10 @@
 			{
 				"command": "pkgnav.showMenu",
 				"title": "Package Navigator: Show Commands"
+			},
+			{
+				"command": "pkgnav.insertTemplate",
+				"title": "Package Navigator: Insert Template"
 			}
 		],
 		"configuration": {
@@ -73,7 +78,7 @@
 			"properties": {
 				"pkgnav.sources": {
 					"type": "array",
-					"markdownDescription": "List of directory subpaths to check for source files. A path does **not** need to start at the root of the project. And it shold **not** contain any file globs. It should be the longest possible subpath that identifies source files that is not specific to an individual project. For example, a Java project might include `src/main/java`.",
+					"markdownDescription": "List of directory subpaths to check for source files. A path does **not** need to start at the root of the project. And it should **not** contain any file globs. It should be the longest possible subpath that identifies source files that is not specific to an individual project. For example, a Java project might include `src/main/java`.",
 					"items": {
 						"type": "string"
 					},
@@ -115,6 +120,87 @@
 					"type": "string",
 					"markdownDescription": "String to use as a separtor when concatenating package names",
 					"default": "."
+				},
+				"pkgnav.template.1.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.1.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
+				},
+				"pkgnav.template.2.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.2.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
+				},
+				"pkgnav.template.3.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.3.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
+				},
+				"pkgnav.template.4.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.4.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
+				},
+				"pkgnav.template.5.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.5.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
+				},
+				"pkgnav.template.6.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.6.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
+				},
+				"pkgnav.template.7.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.7.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
+				},
+				"pkgnav.template.8.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.8.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
+				},
+				"pkgnav.template.9.name": {
+					"type": "string",
+					"markdownDescription": "Template name"
+				},
+				"pkgnav.template.9.text": {
+					"type": "string",
+					"markdownDescription": "Template text",
+					"editPresentation": "multilineText"
 				}
 			}
 		}
